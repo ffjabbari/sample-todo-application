@@ -1,0 +1,41 @@
+.todo-container {
+    padding-top: 35px;
+
+    .todo-add {
+    }
+
+    .todo-list {
+        margin-top: 35px;
+
+        .filter-item {
+            margin-top: 5px;
+            cursor: pointer;
+
+            fa-icon {
+                margin-right: 5px;
+            }
+
+            &.active {
+                font-weight: bold;
+            }
+        }
+
+        .todo-item {
+            font-size: 18px;
+
+            margin-bottom: 5px;
+
+            cursor: pointer;
+
+            padding: 5px;
+
+            border: solid 1px black;
+
+            .todo-done {
+                text-decoration: line-through;
+                font-style: italic;
+                color: grey;
+            }
+        }
+    }
+}

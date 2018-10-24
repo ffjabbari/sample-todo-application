@@ -1,0 +1,12 @@
+version: '2'
+services:
+  frontend:
+    build:
+      context: ./frontend
+    command: "yarn start"
+    ports:
+      - 80:4200
+      - 9987:9876
+    volumes:
+    - ./frontend/src:/usr/local/src/frontend/src
+    - ./frontend/package.json:/usr/local/src/frontend/package.json

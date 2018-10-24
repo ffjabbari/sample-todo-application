@@ -1,0 +1,39 @@
+<div class="container todo-container">
+    <div class="row todo-add">
+        <div class="offset-md-2 col-md-8">
+            <h3>New Todo Item</h3>
+            <div class="input-group">
+                <input type="text" id="input_add_todo" placeholder="Add a new Todo and press Enter" class="form-control" [value]="newTodo" (keyup)="onNewTodoChange($event.target.value)" (keyup.enter)="onAddTodo()" (keyup.escape)="onNewTodoClear()" />
+            </div>
+        </div>
+    </div>
+    <div class="row todo-list">
+        <div class="offset-md-2 col-md-8">
+            <div class="row">
+                <h4 class="col-md-3">Todo List</h4>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="filter-item all text-center col-md-4" (click)="onFilterTodos('ALL')" [ngClass]="{ active: todos.filter === 'ALL' }">
+                            <fa-icon [icon]="iconTasks"></fa-icon>
+                            <span>All Tasks</span>
+                        </div>
+                        <div class="filter-item completed text-center col-md-4" (click)="onFilterTodos('DONE')" [ngClass]="{ active: todos.filter === 'DONE' }">
+                            <fa-icon [icon]="iconCheck"></fa-icon>
+                            <span>Completed Tasks</span>
+                        </div>
+                        <div class="filter-item todo text-center col-md-4" (click)="onFilterTodos('ACTIVE')" [ngClass]="{ active: todos.filter === 'ACTIVE' }">
+                            <fa-icon [icon]="iconSquare"></fa-icon>
+                            <span>Todo Tasks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="todo-item" *ngFor="let todo of filteredTodos" (click)="onToggleTodo(todo)" [id]="todo.id">
+                <input type="checkbox" [checked]="todo.done" (change)="onToggleTodo(todo)" />
+                <span [ngClass]="{ 'todo-done': todo.done }">
+                    {{ todo.name }}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
